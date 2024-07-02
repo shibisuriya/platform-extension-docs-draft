@@ -47,10 +47,24 @@ tags: []
 
 ## Scaffolding a project
 
-- Run the command `npx @shibi-snowball/c3`
+- Run the command `npx @shibi-snowball/c3@latest`
+
+  Note: Don't miss the '@latest' in the command, obiviously
+  the command will work without the it but the latest
+  published version of the scaffolder won't kick in.
 
 - The scaffolder will ask for the project's name and the
   project's target (category).
+
+- Note that the page based custom components (the apps team
+  basically), have a scaffolder of their own, this
+  scaffolder will be merged with c3. And we can scaffold a
+  vite base app that targets kissflow's page + lcnc/sdk
+  preinstalled and configured in that react / vanilla app.
+
+- For now 'git init && git add . && git commit -m 'initial
+  commit'` will create a commit, but I will try to implement
+  this to be done automagically.
 
 - Ones scaffolded, cd into the folder and issue
   `npm install`.
@@ -127,3 +141,39 @@ export default {
   a validation for a custom field in the form wizard,
   Kissflow's default error message for that particular error
   will be supplied to the custom component via props api.
+
+## The api design
+
+- Subjected to change
+
+```js
+const props = {
+  cell: {
+    focused: true | false,
+  },
+
+  value: "", // the current value of the field.
+  field: {
+    id: "", // the id of the field, id is providied by the kissflow platform
+    name: "", // the name of the field, set in the form wizard.
+    type: "", // the field's type, text, phone number field, custom smiley, etc.
+    isRequired: "", // this is set in the wizard as well.
+    hint: "", // this is set in the wizard as well (the help text).
+    defaultValue: "", // The defaault value is set in the form wizard as well.
+    decimalpoints: "", // Number of decimal points for a number base custom field.
+    isComputed: true, // If the value is computed, then just recieve the value via prop, don't try to update the value using `updateValue` and expect it to change.
+    color: "", // color is configured in the style tab of the wizard, the final color will be given to the custom component. framework will handle color precendece (based on rules)...
+  },
+  actions: {
+    // Copied the word 'actions' from  **redux**.
+    updateValue, // Update the 'model', don't call the http api to update the db yet.
+    validateField, // don't know it's purpose.
+  },
+  parameter: {}, // the input params that are configured will be listed here.
+  readonly: true, // if the field is in read only state.
+  disabled: true, // same as above for disabled state.
+  errors: ["", ""], // a list of errors are the validations set in the wizard is run.
+  theme: "dark", // | "light" | "dim", the platform current theme applied by the user.
+  fetchKfApi, // this is for fetching data from our platform, like dataset to be used in the dropdown or something.
+};
+```
