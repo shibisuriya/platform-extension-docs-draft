@@ -177,3 +177,12 @@ const props = {
   fetchKfApi, // this is for fetching data from our platform, like dataset to be used in the dropdown or something.
 };
 ```
+
+- Each touch point will have a varition of this, for
+  example, editable table will only have the `cell` property
+  will in its api (props), remaining touch points wont' have
+  it.
+
+  - Write api docs for each touch point separately, or
+    mention that there is an extra property (or some
+    properties are removed in a specific case).
