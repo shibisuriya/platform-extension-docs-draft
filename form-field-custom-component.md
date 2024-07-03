@@ -133,6 +133,21 @@ export default {
 - The custom fields ones dropped into the wizard, won't be
   interactable.
 
+# Input params
+
+While publishing a c3 project we shall have a key called
+[[publishing-a-custom-component-project#creating-a-custom-field|"property"]]
+in the json where the info. about the input param will be
+stored. Input params will have a default value which could
+be changed per form field while setting it up in the wizard,
+this data will be stored per form field in its metadata
+node. The problem is we have provision to change input param
+and republish the c3 project, if this happens, the data
+saved in the nodes become obsolete, because the input param
+could have be removed or modified. **Versioning will be
+used.** I don't know what 'versioning' means. #partha #jay
+#followup
+
 # Form runtime
 
 ## Validations
