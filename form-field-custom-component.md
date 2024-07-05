@@ -201,3 +201,11 @@ const props = {
   - Write api docs for each touch point separately, or
     mention that there is an extra property (or some
     properties are removed in a specific case).
+
+# Form wizard
+
+## Form wizard preview
+
+- In form wizard all fields have 'readOnly' set to true by
+  Kissflow's framework.
+  ![form-wizard-readonly.png](assets/imgs/form-wizard-readonly.png)
