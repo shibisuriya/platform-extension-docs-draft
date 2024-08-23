@@ -209,3 +209,6 @@ const props = {
 - In form wizard all fields have 'readOnly' set to true by
   Kissflow's framework.
   ![form-wizard-readonly.png](assets/imgs/form-wizard-readonly.png)
+
+- Make sure to keep all the files inside of 'src' because the chokidar watcher is watching only src...
+
